@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Crow.tscn" type="PackedScene" id=1]
+[ext_resource path="res://BoardTile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://BoardManager.cs" type="Script" id=3]
+[ext_resource path="res://Resources/Board.png" type="Texture" id=4]
+
+[node name="BoardManager" type="Node2D"]
+script = ExtResource( 3 )
+TileScene = ExtResource( 2 )
+CrowPiece = ExtResource( 1 )
+
+[node name="Board" type="Sprite" parent="."]
+position = Vector2( 360, 309 )
+texture = ExtResource( 4 )
+
+[node name="TileContainer" type="GridContainer" parent="."]
+margin_left = 112.0
+margin_top = 58.0
+margin_right = 601.0
+margin_bottom = 552.0
+mouse_filter = 2
+custom_constants/vseparation = 62
+custom_constants/hseparation = 61
+columns = 8
+
+[node name="BoardTile" parent="." instance=ExtResource( 2 )]
+margin_left = 6.0
+margin_top = 176.0
+margin_right = 68.0
+margin_bottom = 235.0

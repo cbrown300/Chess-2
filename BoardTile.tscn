@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[sub_resource type="CSharpScript" id=2]
+resource_name = "BoardTile"
+script/source = "using Godot;
+using System;
+
+public class BoardTile : Control
+{
+    // Declare member variables here. Examples:
+    // private int a = 2;
+    // private string b = \"text\";
+
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
+    {
+        
+    }
+
+//  // Called every frame. 'delta' is the elapsed time since the previous frame.
+//  public override void _Process(float delta)
+//  {
+//      
+//  }
+}
+"
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 30, 30 )
+
+[node name="BoardTile" type="Control"]
+margin_left = -2.0
+margin_top = -1.0
+margin_right = 60.0
+margin_bottom = 58.0
+mouse_filter = 1
+script = SubResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 31, 29 )
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 31, 29 )
+scale = Vector2( 0.875, 0.84375 )
+texture = ExtResource( 2 )
+
+[node name="Center" type="Position2D" parent="."]
+position = Vector2( 31, 29 )
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
